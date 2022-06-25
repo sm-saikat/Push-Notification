@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Push Notification Testing</h1>
+    
+
+    <script>
+        function pushNotification(){
+            const notification = new Notification("Test Notification", {
+                body: "This is a test notification"
+            })
+        }
+
+        if(Notification.permission === 'granted'){
+            pushNotification();
+        }else if(Notification.permission != 'denied'){
+            Notification.requestPermission((permission)=>{
+                if(permission === 'granted'){
+                    console.log('granted');
+                    pushNotification();
+                }
+            })
+        }
+    </script>
+</body>
+</html>
